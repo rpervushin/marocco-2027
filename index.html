@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta property="og:title" content="Марокко в апреле 2027">
+<meta property="og:image" content="img/hero.jpg">
+<style>body{margin:0}img{max-width:100%}</style>
+<title>Марокко в апреле</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,600&display=swap">
+<style>
+/* Layout: фото-обложка с синей вуалью, короткое личное вступление, старинная карта маршрута, лента дней с фотографиями, еда, билеты в конце */
+:root{
+  --bg:#F3F4F8; --surface:#FFFFFF; --ink:#171C36; --muted:#5C6381; --line:#D9DDEA;
+  --blue:#2B4186; --brick:#B9532D; --bluebg:#2B4186; --brickbg:#B04E2A; --veil:22,32,74;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --old:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F1228; --surface:#181C3A; --ink:#ECEEF8; --muted:#A5ABCB; --line:#2B3058;
+  --blue:#9DAEEE; --brick:#E28258; --bluebg:#22346F; --brickbg:#963F20; --veil:12,18,48; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0F1228; --surface:#181C3A; --ink:#ECEEF8; --muted:#A5ABCB; --line:#2B3058;
+  --blue:#9DAEEE; --brick:#E28258; --bluebg:#22346F; --brickbg:#963F20; --veil:12,18,48; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+h1,h2,h3,p{margin:0}
+h1,h2{font-family:var(--display);text-wrap:balance;letter-spacing:-0.01em}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px}
+.narrow{max-width:700px}
+
+.hero{color:#fff;background:
+  linear-gradient(to top, rgba(var(--veil),.92) 0%, rgba(var(--veil),.55) 45%, rgba(var(--veil),.25) 100%),
+  url(img/hero.jpg) center/cover no-repeat #2B4186}
+.hero-in{min-height:min(78vh,640px);display:flex;flex-direction:column;justify-content:flex-end;padding-block:120px 52px}
+.eyebrow{font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.hero h1{font-size:clamp(38px,7.4vw,82px);line-height:1.02;font-weight:700;margin-top:14px;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+
+.facts{border-bottom:1px solid var(--line);background:var(--surface)}
+.facts-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:22px 20px 22px 0;min-width:0}
+.fact b{display:block;font-family:var(--display);font-size:21px;font-weight:500;font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted);font-size:15px}
+
+section{padding-block:60px}
+h2{font-size:clamp(26px,4vw,38px);line-height:1.12;font-weight:700}
+.kicker{color:var(--brick);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.hello{font-size:clamp(19px,2.3vw,22px);line-height:1.55}
+.about{margin-top:22px;color:var(--muted)}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+
+.mapbox{max-width:760px;margin:28px auto 0}
+.map{width:100%;height:auto;display:block;border-radius:6px;box-shadow:0 10px 30px rgba(20,20,40,.18)}
+.mapnote{max-width:760px;margin:18px auto 0;color:var(--muted);font-size:15.5px}
+
+.days{list-style:none;margin:0;padding:0}
+.day{display:grid;grid-template-columns:160px 1fr;gap:28px;padding:34px 0;border-top:1px solid var(--line)}
+.day:first-child{border-top:0;padding-top:0}
+.day > div{min-width:0}
+.date b{display:block;font-family:var(--display);font-size:21px;font-weight:700;line-height:1.2;white-space:nowrap;color:var(--blue);font-variant-numeric:tabular-nums}
+.date span{color:var(--muted);font-size:15px}
+.day h3{font-family:var(--display);font-weight:500;font-size:21px;line-height:1.25}
+.day p{margin-top:8px;max-width:64ch}
+.tag{display:inline-block;margin-top:12px;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+.shots{display:grid;gap:10px;margin-top:18px}
+.shots.n1{grid-template-columns:1fr;max-width:640px}
+.shots.n2{grid-template-columns:1fr 1fr}
+.shots.n3{grid-template-columns:repeat(3,1fr)}
+.shots.wide{grid-template-columns:2fr 1fr}
+.shots.wide img{aspect-ratio:auto;height:100%;min-height:0}
+.shots.wide img:first-child{aspect-ratio:3/2;height:auto}
+.shots.rev{grid-template-columns:1fr 2fr}
+.shots.rev img:first-child{aspect-ratio:auto;height:100%}
+.shots.rev img:last-child{aspect-ratio:3/2;height:auto}
+.shots.big{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr}
+.shots.big img{aspect-ratio:auto;height:100%;min-height:0}
+.shots.big img:first-child{grid-row:1/3;aspect-ratio:3/2.03;height:auto}
+.shots.pano img{aspect-ratio:21/9}
+.shots.bigr{grid-template-columns:1fr 2fr;grid-template-rows:1fr 1fr}
+.shots.bigr img{aspect-ratio:auto;height:100%;min-height:0}
+.shots.bigr img:first-child{grid-column:2;grid-row:1/3;aspect-ratio:3/2.03;height:auto}
+.shots.quad{grid-template-columns:1fr 1fr}
+.shots.top{grid-template-columns:1fr 1fr}
+.shots.top img:first-child{grid-column:1/-1;aspect-ratio:21/9}
+.shots img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block;background:var(--line)}
+
+.foodpics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.foodpics img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;display:block;background:var(--line)}
+.food{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+.food div{min-width:0;border-top:3px solid var(--brick);padding-top:14px}
+.food b{display:block;font-family:var(--display);font-weight:500;font-size:17px;margin-bottom:6px}
+.food p{color:var(--muted);font-size:15.5px;line-height:1.5}
+
+.ticket{background:var(--surface);border:1px solid var(--line);border-radius:20px;margin-top:28px;display:grid;grid-template-columns:1fr 1fr auto}
+.leg{padding:26px 28px;border-right:1px dashed var(--line);min-width:0}
+.leg small{display:block;color:var(--muted);font-size:14px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.leg strong{display:block;font-family:var(--display);font-weight:500;font-size:19px;margin:8px 0 6px;line-height:1.25}
+.leg p{color:var(--muted);font-size:15.5px;line-height:1.5}
+.price{padding:26px 28px;display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:200px}
+.price b{font-family:var(--display);font-size:30px;font-weight:700;white-space:nowrap}
+.price span{color:var(--muted);font-size:15px}
+
+
+.costs{list-style:none;margin:8px 0 0;padding:0;color:var(--muted);font-size:13.5px;line-height:1.5}
+.lead{font-size:clamp(19px,2.4vw,23px);line-height:1.55}
+.zel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.09' stroke-width='1.5'%3E%3Crect x='16' y='16' width='40' height='40'/%3E%3Crect x='16' y='16' width='40' height='40' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E")}
+.blue{background-color:var(--bluebg);color:#fff}
+.brickbg{background-color:var(--brickbg);color:#fff}
+.blue .about,.brickbg .food p{color:rgba(255,255,255,.86)}
+.blue h2,.brickbg h2{color:#fff}
+.brickbg .kicker{color:#FFE2CF}
+.brickbg .food div{border-top-color:rgba(255,255,255,.75)}
+.blue .ticket{color:var(--ink)}
+.days .date b{color:var(--brick)}
+.day{border-top-color:var(--line)}
+@media (max-width:820px){
+  .hero-in{min-height:440px;padding-block:90px 36px}
+  .facts-in{grid-template-columns:1fr 1fr}
+  .ticket{grid-template-columns:1fr}
+  .leg{border-right:0;border-bottom:1px dashed var(--line)}
+  .day{grid-template-columns:1fr;gap:10px}
+  .date{display:flex;gap:10px;align-items:baseline}
+  .food{grid-template-columns:1fr 1fr}
+  .shots.n3{grid-template-columns:1fr 1fr}
+  .shots.n3 img:first-child{grid-column:1/-1}
+  section{padding-block:44px}
+}
+@media (max-width:440px){ .food{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <p class="eyebrow">10 - 18 апреля · 8 ночей · 5 городов</p>
+    <h1>Марокко<br>в апреле 2027</h1>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap facts-in">
+    <div class="fact"><b>10 - 18.04</b><span>вылет в ночь на субботу, дома в воскресенье вечером</span></div>
+    <div class="fact"><b>31 000 ₽</b><span>перелет туда-обратно</span><ul class="costs"><li>жилье до 2 500 ₽ / ночь</li><li>переезды ≈ 10 000 ₽</li><li>с собой 3 000 - 5 000 ₽ / день</li></ul></div>
+    <div class="fact"><b>Без визы</b><span>нужен только загранпаспорт</span></div>
+    <div class="fact"><b>Лучший сезон</b><span>середина апреля идеальна для Марокко</span></div>
+  </div>
+</div>
+
+<section class="blue zel">
+  <div class="wrap narrow">
+    <p class="lead">Марокко - это перекресток древних культур, Востока и Запада, арабской науки и европейского влияния. Там очень контрастно: средневековые медины и французские бульвары, снежные горы Атласа и океан. Будем пробовать ароматный тажин, кускус и сладкий мятный чай. И серое вино с видом на древние площади.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Маршрут</p>
+    <h2>Круг с юга на север и обратно к океану</h2>
+    <div class="mapbox">
+      <svg class="map" viewBox="0 0 610 520" role="img" aria-label="Карта маршрута: Марракеш, Фес, Шефшауэн, Рабат, Касабланка">
+        <defs>
+          <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+          <filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .22 0"/></filter>
+          <radialGradient id="age" cx="50%" cy="50%" r="72%"><stop offset="60%" stop-color="#7A5226" stop-opacity="0"/><stop offset="100%" stop-color="#7A5226" stop-opacity=".38"/></radialGradient>
+          <path id="mt" d="M-10 7 L0 -9 L10 7 M0 -9 L4 7" fill="none" stroke="#5B3F22" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+        </defs>
+        <rect width="610" height="520" fill="#C9D6CB"/>
+        <g filter="url(#wob)">
+          <g fill="none" stroke="#5B3F22" stroke-width="1.2">
+            <path d="M0 440 L26 350 L100 255 L191 223 L266 178 L335 61 L369 6 L418 2 L430 28 L640 62" transform="translate(-9 -7)" opacity=".4"/>
+            <path d="M0 440 L26 350 L100 255 L191 223 L266 178 L335 61 L369 6 L418 2 L430 28 L640 62" transform="translate(-18 -14)" opacity=".22"/>
+          </g>
+          <path d="M-20 440 L26 350 L100 255 L191 223 L266 178 L335 61 L369 6 L418 2 L430 28 L640 62 L640 540 L-20 540 Z" fill="#EAD9B0" stroke="#5B3F22" stroke-width="2"/>
+          <g>
+            <use href="#mt" x="70" y="492"/><use href="#mt" x="108" y="500"/>
+            <use href="#mt" x="300" y="472"/><use href="#mt" x="334" y="454"/><use href="#mt" x="368" y="437"/><use href="#mt" x="402" y="418"/><use href="#mt" x="436" y="400"/><use href="#mt" x="470" y="382"/><use href="#mt" x="352" y="478"/><use href="#mt" x="420" y="442"/>
+            <use href="#mt" x="398" y="254"/><use href="#mt" x="430" y="240"/><use href="#mt" x="462" y="252"/><use href="#mt" x="496" y="238"/>
+            <use href="#mt" x="540" y="250"/><use href="#mt" x="478" y="112"/><use href="#mt" x="560" y="120"/><use href="#mt" x="510" y="100"/><use href="#mt" x="390" y="104"/>
+          </g>
+        </g>
+        <path d="M150 417 L450 177 L423 63 L266 178 L191 223" fill="none" stroke="#A8401F" stroke-width="2.6" stroke-dasharray="9 6" stroke-linecap="round"/>
+        <path d="M150 417 L158 466" fill="none" stroke="#A8401F" stroke-width="2" stroke-dasharray="3 5" stroke-linecap="round"/>
+        <g fill="#A8401F" stroke="#3E2A14" stroke-width="1.5">
+          <circle cx="150" cy="417" r="8"/><circle cx="450" cy="177" r="8"/><circle cx="423" cy="63" r="8"/><circle cx="266" cy="178" r="8"/><circle cx="191" cy="223" r="8"/>
+          <circle cx="158" cy="466" r="4.5"/>
+        </g>
+        <g font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="600" fill="#3E2A14">
+          <g font-size="25">
+            <text x="168" y="414">Марракеш</text>
+            <text x="466" y="175">Фес</text>
+            <text x="440" y="58">Шефшауэн</text>
+            <text x="282" y="204">Рабат</text>
+            <text x="205" y="252">Касабланка</text>
+          </g>
+          <g font-size="17" opacity=".8">
+            <text x="168" y="433">3 ночи</text>
+            <text x="466" y="194">2 ночи</text>
+            <text x="440" y="77">1 ночь</text>
+            <text x="282" y="222">1 ночь</text>
+            <text x="205" y="270">1 ночь</text>
+            <text x="172" y="472">Имлиль</text>
+            <text x="318" y="505" letter-spacing="3">Высокий Атлас</text>
+            <text x="34" y="158" letter-spacing="1">Атлантический</text><text x="34" y="177" letter-spacing="1">океан</text>
+          </g>
+        </g>
+        <g transform="translate(70 70)" stroke="#3E2A14" stroke-width="1.2">
+          <circle r="34" fill="none"/><circle r="26" fill="none" stroke-dasharray="2 4"/>
+          <path d="M0 -44 L7 0 L0 44 L-7 0 Z" fill="#3E2A14"/><path d="M-44 0 L0 -7 L44 0 L0 7 Z" fill="#EAD9B0"/>
+          <path d="M0 -44 L7 0 L0 0 Z" fill="#A8401F"/>
+          <text y="-50" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="600" font-size="18" fill="#3E2A14" stroke="none">С</text>
+        </g>
+        <rect width="610" height="520" filter="url(#paper)"/>
+        <rect width="610" height="520" fill="url(#age)"/>
+        <rect x="9" y="9" width="592" height="502" fill="none" stroke="#3E2A14" stroke-width="2.5"/>
+        <rect x="15" y="15" width="580" height="490" fill="none" stroke="#3E2A14" stroke-width=".8"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <ol class="days">
+      <li class="day">
+        <div class="date"><b>10 апреля</b><span>суббота</span></div>
+        <div><h3>Марракеш. Заселиться, отдохнуть, выйти на площадь</h3>
+          <p>В обед заселяемся. Можно поспать после ночного перелета. К вечеру выходим на Джемаа-эль-Фна: дым от жаровен, барабаны, рассказчики и заклинатели змей. Потом поднимаемся на террасу над площадью и смотрим на все это сверху с бокалом вина или чашкой кофе.</p>
+          <div class="shots big"><img src="img/jemaa.jpg" alt="Площадь Джемаа-эль-Фна на закате" loading="lazy"><img src="img/souk.jpg" alt="Крытая улица рынка в Марракеше" loading="lazy"><img src="img/spices.jpg" alt="Горки специй на рынке" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>11 апреля</b><span>воскресенье</span></div>
+        <div><h3>Марракеш. Весь город за один день</h3>
+          <p>Утром сад Мажорель, который выкупил и сберег Ив Сен-Лоран: кобальтовые стены, кактусы и бамбук. Потом дворец Бахия с резными кедровыми потолками и медресе Бен Юсефа. После обеда теряемся в суках: специи, кожа, медные лампы и торг как отдельный вид спорта.</p>
+          <div class="shots n3"><img src="img/majorelle.jpg" alt="Вилла в саду Мажорель" loading="lazy"><img src="img/bahia.jpg" alt="Внутренний двор дворца с фонтаном" loading="lazy"><img src="img/ysl.jpg" alt="Двор музея Ива Сен-Лорана" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>12 апреля</b><span>понедельник</span></div>
+        <div><h3>Горы Атласа и вечер в хаммаме</h3>
+          <p>Полтора часа от города - и мы в деревне Имлиль под Тубкалем, высшей точкой Северной Африки. Легкая тропа на два-три часа к водопаду и берберским деревням, в обычных кроссовках и без экипировки. Обед на террасе с видом на вершины. Вечером хаммам: пар, черное мыло и долгий массаж.</p>
+          <div class="shots bigr"><img src="img/atlas.jpg" alt="Долина в горах Атласа" loading="lazy"><img src="img/imlil.jpg" alt="Деревня Имлиль под снежными вершинами" loading="lazy"><img src="img/hammam.jpg" alt="Бассейн в хаммаме" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>13 апреля</b><span>вторник</span></div>
+        <div><h3>Поезд в Фес</h3>
+          <p>Единственный длинный переезд за поездку, около семи часов. Первый класс, окно, книжка и страна, которая меняется от красной земли юга к зеленым холмам севера. Вечером ужин в старом городе.</p>
+          <div class="shots wide"><img src="img/train.jpg" alt="Поезд на станции в Марокко" loading="lazy"><img src="img/fes-gate.jpg" alt="Ворота в старый город Феса" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>14 апреля</b><span>среда</span></div>
+        <div><h3>Фес. Самая большая в мире зона без машин</h3>
+          <p>Культурная и религиозная столица страны. Медина Фес-эль-Бали - объект ЮНЕСКО и тысячи переулков, куда не проедет ни один автомобиль, только ослики с поклажей. Здесь пахнет специями, свежим хлебом и кожей. Смотрим красильни Шуара с крыш и Аль-Карауин, который считается старейшим действующим университетом мира.</p>
+          <div class="shots quad"><img src="img/fes.jpg" alt="Вид на Фес сверху" loading="lazy"><img src="img/tanneries.jpg" alt="Красильни Шуара" loading="lazy"><img src="img/fes-market.jpg" alt="Яркие ковры и тарелки в переулке медины" loading="lazy"><img src="img/fes-street.jpg" alt="Улица в медине Феса с минаретом" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>15 апреля</b><span>четверг</span></div>
+        <div><h3>Шефшауэн. Синий город в горах</h3>
+          <p>Утром выезжаем на машине и к обеду поднимаемся в горы Риф. Город выкрашен во все оттенки синего: стены, лестницы, двери, цветочные горшки. Гуляем до заката, когда дневные туристы уже уехали.</p>
+          <div class="shots big"><img src="img/chef1.jpg" alt="Синяя лестница в Шефшауэне" loading="lazy"><img src="img/chef2.jpg" alt="Синий дворик с горшками" loading="lazy"><img src="img/chef3.jpg" alt="Лавки с сумками и тарелками в Шефшауэне" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>16 апреля</b><span>пятница</span></div>
+        <div><h3>Рабат. Вечер у океана</h3>
+          <p>Раннее утро в пустом Шефшауэне, потом дорога к Атлантике. Рабат - спокойная и зеленая столица. Вечером идем в касбу Удайя: белые улочки над обрывом, сад и чай с видом на океан.</p>
+          <div class="shots top"><img src="img/rabat.jpg" alt="Вид на океан с касбы Удайя" loading="lazy"><img src="img/kasbah.jpg" alt="Бело-синие улочки касбы" loading="lazy"><img src="img/rabat2.jpg" alt="Пальмовая аллея в Рабате" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>17 апреля</b><span>суббота</span></div>
+        <div><h3>Касабланка. Последний день</h3>
+          <p>Час на поезде. Мечеть Хасана II стоит прямо над океаном, ее минарет высотой 210 метров, и это одна из немногих мечетей страны, куда пускают немусульман. Дальше набережная Корниш, квартал Хабус и ар-деко в центре. Вечером прощальный ужин.</p>
+          <div class="shots big"><img src="img/casa2.jpg" alt="Мечеть Хасана II на закате" loading="lazy"><img src="img/habous.jpg" alt="Квартал Хабус" loading="lazy"><img src="img/casa.jpg" alt="Мечеть Хасана II над океаном" loading="lazy"></div></div>
+      </li>
+      <li class="day">
+        <div class="date"><b>18 апреля</b><span>воскресенье</span></div>
+        <div><h3>Домой</h3>
+          <p>Завтрак, аэропорт, прямой рейс в Москву. В чемодане специи, аргановое масло и пара килограммов мандаринов.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="brickbg zel">
+  <div class="wrap">
+    <p class="kicker">Что будем есть и пить</p>
+    <h2>Тажин, пастилья и чай с высоты</h2>
+    <div class="foodpics"><img src="img/tajine.jpg" alt="Тажины на столе" loading="lazy"><img src="img/wine.jpg" alt="Бокал вина и устрицы у океана" loading="lazy"></div>
+    <div class="food">
+      <div><b>Тажин</b><p>Мясо с черносливом или курица с лимоном и оливками, которые часами томятся в глиняном конусе.</p></div>
+      <div><b>Голубиная пастилья</b><p>Слоеный пирог с голубем, миндалем и корицей под сахарной пудрой. Сладкое и соленое сразу.</p></div>
+      <div><b>Баранья лопатка</b><p>Томится несколько часов, пока мясо не начнет само отходить от кости. Едят руками, с тмином и солью.</p></div>
+      <div><b>Кускус</b><p>Главное блюдо страны. По традиции его готовят по пятницам на всю семью.</p></div>
+      <div><b>Мятный чай</b><p>Сладкий, обжигающий, его льют в стакан с высоты вытянутой руки. Подают везде и всегда.</p></div>
+      <div><b>Серое вино</b><p>Vin gris - очень светлое розовое, местная гордость. Попробуем?</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="flight" class="blue zel">
+  <div class="wrap">
+    <h2>Билеты</h2>
+    <p class="about" style="max-width:40em">Остальное соберем по ходу, а вот билеты важно купить поскорее: по такой цене они могут разлететься как пирожки.</p>
+    <div class="ticket">
+      <div class="leg">
+        <small>Туда · ночь на субботу 10 апреля</small>
+        <strong>Москва → Марракеш</strong>
+        <p>Royal Air Maroc, вылет около часа ночи с пятницы на субботу. Прямой рейс до Касабланки и короткая стыковка до Марракеша тем же билетом. Утром на месте.</p>
+      </div>
+      <div class="leg">
+        <small>Обратно · воскресенье 18 апреля</small>
+        <strong>Касабланка → Москва</strong>
+        <p>Royal Air Maroc, прямой рейс в первой половине дня. Вечером дома.</p>
+      </div>
+      <div class="price">
+        <b>≈ 31 000 ₽</b>
+        <span>туда-обратно на человека</span>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
